@@ -3,7 +3,7 @@
   "description": "Provides an Oclif plugin to to configure @rollup/plugin-node-resolve & @rollup/plugin-commonjs for rollup-runner.",
   "version": "0.0.0",
   "author": "typhonrt",
-  "bugs": "https://github.com/typhonjs-node-bundle/plugin-node-resolve/issues",
+  "bugs": "https://github.com/typhonjs-node-bundle/npmbundle/issues",
   "dependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0"
