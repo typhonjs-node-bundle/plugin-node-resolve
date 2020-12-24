@@ -36,7 +36,7 @@ module.exports = async function(opts)
 {
    try
    {
-      process.pluginManager.add({ name: 'plugin-node-resolve', instance: PluginHandler });
+      global.$$pluginManager.add({ name: 'plugin-node-resolve', instance: PluginHandler });
 
       // TODO REMOVE
       process.stdout.write(`plugin-node-resolve init hook running ${opts.id}\n`);
