@@ -10,12 +10,9 @@ class PluginHandler
    /**
     * Returns the configured input plugin for `@rollup/plugin-replace`
     *
-    * @param {object} bundleData        - The CLI config
-    * @param {object} bundleData.cliFlags  - The CLI config
-    *
-    * @returns {object} Rollup plugin
+    * @returns {object[]} Rollup plugins
     */
-   static getInputPlugin(bundleData = {})
+   static getInputPlugin()
    {
       return [nodeResolve({ browser: true }), commonjs()];
    }
