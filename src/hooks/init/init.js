@@ -1,3 +1,6 @@
+const commonjs = require('@rollup/plugin-commonjs');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+
 /**
  * Handles interfacing with the plugin manager adding event bindings to pass back configured
  * instances of `@rollup/plugin-node-resolve` & `@rollup/plugin-commonjs`.
@@ -5,9 +8,17 @@
 class PluginHandler
 {
    /**
-    * @returns {string}
+    * Returns the configured input plugin for `@rollup/plugin-replace`
+    *
+    * @param {object} bundleData        - The CLI config
+    * @param {object} bundleData.cliFlags  - The CLI config
+    *
+    * @returns {object} Rollup plugin
     */
-   static test() { return 'some testing'; }
+   static getInputPlugin(bundleData = {})
+   {
+      return [nodeResolve({ browser: true }), commonjs()];
+   }
 
    /**
     * Wires up PluginHandler on the plugin eventbus.
@@ -20,8 +31,7 @@ class PluginHandler
     */
    static onPluginLoad(ev)
    {
-      // TODO: ADD EVENT REGISTRATION
-      // eventbus.on(`${eventPrepend}test`, PluginHandler.test, PluginHandler);
+      ev.eventbus.on('typhonjs:oclif:rollup:plugins:npm:input:get', PluginHandler.getInputPlugin, PluginHandler);
    }
 }
 
