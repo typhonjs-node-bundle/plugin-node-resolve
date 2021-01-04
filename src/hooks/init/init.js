@@ -45,8 +45,7 @@ module.exports = async function(opts)
    {
       global.$$pluginManager.add({ name: '@typhonjs-node-rollup/plugin-node-resolve', instance: PluginHandler });
 
-      // TODO REMOVE
-      process.stdout.write(`plugin-node-resolve init hook running ${opts.id}\n`);
+      global.$$eventbus.trigger('log:debug', `plugin-node-resolve init hook running '${opts.id}'.`);
    }
    catch (error)
    {
