@@ -1,51 +1,19 @@
-const commonjs = require('@rollup/plugin-commonjs');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-
-/**
- * Handles interfacing with the plugin manager adding event bindings to pass back configured
- * instances of `@rollup/plugin-node-resolve` & `@rollup/plugin-commonjs`.
- */
-class PluginHandler
-{
-   /**
-    * Returns the configured input plugin for `@rollup/plugin-replace`
-    *
-    * @returns {object[]} Rollup plugins
-    */
-   static getInputPlugin()
-   {
-      return [nodeResolve({ browser: true }), commonjs()];
-   }
-
-   /**
-    * Wires up PluginHandler on the plugin eventbus.
-    *
-    * @param {PluginEvent} ev - The plugin event.
-    *
-    * @see https://www.npmjs.com/package/typhonjs-plugin-manager
-    *
-    * @ignore
-    */
-   static onPluginLoad(ev)
-   {
-      ev.eventbus.on('typhonjs:oclif:bundle:plugins:npm:input:get', PluginHandler.getInputPlugin, PluginHandler);
-   }
-}
+const PluginLoader = require('../../loader/PluginLoader');
 
 /**
  * Oclif init hook to add PluginHandler to plugin manager.
  *
- * @param {object} opts - options of the CLI action.
+ * @param {object} options - options of the CLI action.
  *
  * @returns {Promise<void>}
  */
-module.exports = async function(opts)
+module.exports = async function(options)
 {
    try
    {
-      global.$$pluginManager.add({ name: '@typhonjs-node-rollup/plugin-node-resolve', instance: PluginHandler });
+      global.$$pluginManager.add({ name: PluginLoader.pluginName, instance: PluginLoader, options });
 
-      global.$$eventbus.trigger('log:debug', `plugin-node-resolve init hook running '${opts.id}'.`);
+      global.$$eventbus.trigger('log:debug', `plugin-node-resolve init hook running '${options.id}'.`);
    }
    catch (error)
    {
