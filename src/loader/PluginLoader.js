@@ -1,6 +1,9 @@
 const commonjs          = require('@rollup/plugin-commonjs');
 const { nodeResolve }   = require('@rollup/plugin-node-resolve');
 
+const s_CONFLICT_PACKAGES = ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve'];
+const s_PACKAGE_NAME = '@typhonjs-node-rollup/plugin-node-resolve';
+
 /**
  * Handles interfacing with the plugin manager adding event bindings to pass back configured
  * instances of `@rollup/plugin-node-resolve` & `@rollup/plugin-commonjs`.
@@ -8,18 +11,18 @@ const { nodeResolve }   = require('@rollup/plugin-node-resolve');
 class PluginLoader
 {
    /**
+    * Returns the any modules that cause a conflict.
+    *
+    * @returns {string[]}
+    */
+   static get conflictPackages() { return s_CONFLICT_PACKAGES; }
+
+   /**
     * Returns the `package.json` module name.
     *
     * @returns {string}
     */
-   static get pluginName() { return '@typhonjs-node-rollup/plugin-node-resolve'; }
-
-   /**
-    * Returns the rollup plugins managed.
-    *
-    * @returns {string[]}
-    */
-   static get rollupPlugins() { return ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve']; }
+   static get packageName() { return s_PACKAGE_NAME; }
 
    /**
     * Returns the configured input plugin for `@rollup/plugin-replace`
