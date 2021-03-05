@@ -1,5 +1,5 @@
-const commonjs          = require('@rollup/plugin-commonjs');
-const { nodeResolve }   = require('@rollup/plugin-node-resolve');
+import commonjs         from '@rollup/plugin-commonjs';
+import { nodeResolve }  from '@rollup/plugin-node-resolve';
 
 const s_CONFLICT_PACKAGES = ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve'];
 const s_PACKAGE_NAME = '@typhonjs-node-rollup/plugin-node-resolve';
@@ -8,7 +8,7 @@ const s_PACKAGE_NAME = '@typhonjs-node-rollup/plugin-node-resolve';
  * Handles interfacing with the plugin manager adding event bindings to pass back configured
  * instances of `@rollup/plugin-node-resolve` & `@rollup/plugin-commonjs`.
  */
-class PluginLoader
+export default class PluginLoader
 {
    /**
     * Returns the any modules that cause a conflict.
@@ -48,5 +48,3 @@ class PluginLoader
       ev.eventbus.on('typhonjs:oclif:bundle:plugins:npm:input:get', PluginLoader.getInputPlugin, PluginLoader);
    }
 }
-
-module.exports = PluginLoader;
