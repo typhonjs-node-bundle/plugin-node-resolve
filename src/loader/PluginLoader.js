@@ -2,7 +2,7 @@ import commonjs         from '@rollup/plugin-commonjs';
 import { nodeResolve }  from '@rollup/plugin-node-resolve';
 
 const s_CONFLICT_PACKAGES = ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve'];
-const s_PACKAGE_NAME = '@typhonjs-node-rollup/plugin-node-resolve';
+const s_PACKAGE_NAME = '@typhonjs-oclif-rollup/plugin-node-resolve';
 
 /**
  * Handles interfacing with the plugin manager adding event bindings to pass back configured
@@ -25,7 +25,7 @@ export default class PluginLoader
    static get packageName() { return s_PACKAGE_NAME; }
 
    /**
-    * Returns the configured input plugin for `@rollup/plugin-replace`
+    * Returns the configured input plugin for `@rollup/plugin-node-resolve` and `@rollup/plugin-commonjs`.
     *
     * @returns {object[]} Rollup plugins
     */
@@ -35,7 +35,7 @@ export default class PluginLoader
    }
 
    /**
-    * Wires up PluginHandler on the plugin eventbus.
+    * Wires up PluginLoader on the plugin eventbus.
     *
     * @param {object} ev - PluginInvokeEvent - The plugin event.
     *
