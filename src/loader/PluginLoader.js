@@ -1,5 +1,5 @@
 import commonjs   from '@rollup/plugin-commonjs';
-import PNR        from '@rollup/plugin-node-resolve';
+import * as PNR   from '@rollup/plugin-node-resolve';
 
 const s_CONFLICT_PACKAGES = ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve'];
 const s_PACKAGE_NAME = '@typhonjs-oclif-rollup/plugin-node-resolve';
