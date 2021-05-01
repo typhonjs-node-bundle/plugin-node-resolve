@@ -1,5 +1,5 @@
-import commonjs         from '@rollup/plugin-commonjs';
-import { nodeResolve }  from '@rollup/plugin-node-resolve';
+import commonjs   from '@rollup/plugin-commonjs';
+import PNR        from '@rollup/plugin-node-resolve';
 
 const s_CONFLICT_PACKAGES = ['@rollup/plugin-commonjs', '@rollup/plugin-node-resolve'];
 const s_PACKAGE_NAME = '@typhonjs-oclif-rollup/plugin-node-resolve';
@@ -31,7 +31,7 @@ export default class PluginLoader
     */
    static getInputPlugin()
    {
-      return [nodeResolve({ browser: true }), commonjs()];
+      return [PNR.nodeResolve({ browser: true }), commonjs()];
    }
 
    /**
