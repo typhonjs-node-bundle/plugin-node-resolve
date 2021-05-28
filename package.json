@@ -1,7 +1,7 @@
 {
   "name": "@typhonjs-oclif-rollup/plugin-node-resolve",
   "description": "Provides an Oclif plugin to to configure @rollup/plugin-node-resolve & @rollup/plugin-commonjs for rollup-runner.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)",
   "type": "module",
   "main": "src/loader/PluginLoader.js",
@@ -9,8 +9,8 @@
     "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
   ],
   "dependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0"
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0"
   },
   "devDependencies": {
     "@typhonjs-utils/build-test": "^0.1.0"
